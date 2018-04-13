@@ -52,7 +52,10 @@ class Calculator extends Component {
                 console.log(resultbefore,'suanshi');
                 console.log(val,'jieguo');
                 this.setState({express:resultbefore});
-
+                let myDate = new Date();
+                let time = myDate.toLocaleString();
+                this.state.record.push({time:time,user:"name",value:resultbefore});
+                console.log(this.state.record,'record');
                 //updateCal(resultbefore);
                 return val;
 
@@ -117,25 +120,26 @@ class Calculator extends Component {
 
     //生成历史记录列表
     initHistoryList=(list,valuearr)=>{
-      {
         valuearr.forEach(data=>{
             list.push(
-                <div key={data.time}>
-                    <i>{data.time}</i>
-                    <i>{data.user}</i>
-                    <p>{data.value}</p>
+                <div className='div_class_historyline' key={data.time}>
+                    <span>{data.time} &nbsp;&nbsp;</span>
+                    <span>{data.user} &nbsp;&nbsp;</span>
+                    <span>{data.value}</span>
                 </div>
             )
         })
-
-    }
     return list;
 }
 
     render() {
       let buttonlist = [];//按钮列表
       let historyList = [];
-      buttonlist = this.initButtonList(buttonlist,BUTTONVALUE)
+      console.log(buttonlist);
+      console.log(this.state.record);
+      console.log(historyList);
+      buttonlist = this.initButtonList(buttonlist,BUTTONVALUE);
+      historyList = this.initHistoryList(historyList,this.state.record);
         return (
             <div className='div_class_All'>
                 <div className='div_class_calculator'>
@@ -150,62 +154,11 @@ class Calculator extends Component {
                         {buttonlist}
                     </div>
                 </div>
-
                 <div className='div_class_historybar'>
                 <span>Recent 10 Calculations</span>
-                <div>
-                  <div>
-                  <i>2017-1-1</i>
-                  <span>user</span>
-                  <span>calculation</span>
-                  </div>
-                  <div>
-                  <i>2017-1-1</i>
-                  <span>user</span>
-                  <span>calculation</span>
-                  </div>
-                  <div>
-                  <i>2017-1-1</i>
-                  <span>user</span>
-                  <span>calculation</span>
-                  </div>
-                  <div>
-                  <i>2017-1-1</i>
-                  <span>user</span>
-                  <span>calculation</span>
-                  </div>
-                  <div>
-                  <i>2017-1-5</i>
-                  <span>user</span>
-                  <span>calculation</span>
-                  </div>
-                  <div>
-                  <i>2017-1-1</i>
-                  <span>user</span>
-                  <span>calculation</span>
-                  </div>
-                  <div>
-                  <i>2017-1-1</i>
-                  <span>user</span>
-                  <span>calculation</span>
-                  </div>
-                  <div>
-                  <i>2017-1-1</i>
-                  <span>user</span>
-                  <span>calculation</span>
-                  </div>
-                  <div>
-                  <i>2017-1-1</i>
-                  <span>user</span>
-                  <span>calculation</span>
-                  </div>
-                  <div>
-                  <i>2017-1-10</i>
-                  <span>user</span>
-                  <span>calculation</span>
-                  </div>
+                <div className='div_class_historybox'>
+                {historyList}
                 </div>
-
                 </div>
             </div>
         );

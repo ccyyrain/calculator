@@ -53,27 +53,28 @@
 }
 
 
-/*历史记录面板*/
 .div_class_historybar{
-    margin-right: 30px;
-    width: 600px;
-    height: 500px;
+    margin: 0 auto;
     display: flex;
-    justify-content: flex-start;
-    opacity: 0.8;
-    background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
-    box-shadow:0px 5px 5px #90A4AE;
+    height: 600px;
+    width: 600px;
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: scroll;
 }
-
 .div_class_historybar>span{
     font-size: 24px;
     color:#071A52;
+    border-bottom: 2px solid #071A52;
+
 }
 
-.div_class_historybar div{
+.div_class_historyline{
     font-size: 20px;
     margin:15px 0;
-    overflow-y: auto;
+    border: 1px solid;
     flex: 1;
+    overflow-x: scroll;
+    height: 40px;
+    text-align: left;
 }
-/*时间*/
