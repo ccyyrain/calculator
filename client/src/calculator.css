@@ -1,0 +1,79 @@
+.div_class_All{
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+}
+.div_class_calculator{
+    text-align: center;
+    margin-left: 30px;
+    padding-top: 15px;
+    width: 640px;
+    height: 500px;
+    /* overflow: hidden; */
+    border: #fff 1px solid;
+    padding-bottom: 10px;
+    background-color: #f2f2f2;
+}
+.div_class_databar input{
+    width: 600px;
+    height: 40px;
+    line-height: 24px;
+    margin: 10px auto;
+    text-align: right;
+    font-size: 24px;
+    font-weight:bold;
+}
+
+.div_class_buttonlist{
+    width: 600px;
+    height: auto;
+    padding: 10px 0;
+    display: flex;
+    flex-flow: row wrap;
+    margin: auto;
+    align-content: flex-start;
+}
+
+.div_class_button{
+    box-sizing: border-box;
+    flex: 0 0 19%;
+    height: 68px;
+    font-size: 20px;
+    margin-top: 8px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+/*"="*/
+.div_class_button:nth-last-child(1){
+    font-size: 45px;
+    font-weight: bold;
+    background: orangered;
+    color: #fff;
+}
+
+
+/*历史记录面板*/
+.div_class_historybar{
+    margin-right: 30px;
+    width: 600px;
+    height: 500px;
+    display: flex;
+    justify-content: flex-start;
+    opacity: 0.8;
+    background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
+    box-shadow:0px 5px 5px #90A4AE;
+}
+
+.div_class_historybar>span{
+    font-size: 24px;
+    color:#071A52;
+}
+
+.div_class_historybar div{
+    font-size: 20px;
+    margin:15px 0;
+    overflow-y: auto;
+    flex: 1;
+}
+/*时间*/

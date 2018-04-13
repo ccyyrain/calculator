@@ -4,17 +4,9 @@ import './index.css';
 import App from './App';
 import { Route,BrowserRouter, Switch } from 'react-router-dom';
 
-import Root from './Root';
-import movie_details from './movies';
 
-ReactDOM.render(
-  <div>
+ReactDOM.render((
+  <BrowserRouter>
     <App />
-    <BrowserRouter>
-      <Switch>
-        <Route exact path='/' component={Root}/>
-        <Route path='/movies/:movieId' component={movie_details}/>
-      </Switch>
-    </BrowserRouter>
-
-  </div>,document.getElementById('root'));
+  </BrowserRouter>
+), document.getElementById('root'));
