@@ -26,6 +26,7 @@ const BUTTONVALUE = [
 class Calculator extends Component {
     constructor(props){
         super(props);
+        this.isAuthenticated = this.props.isAuthenticated.bind(this);
         this.state = {
           valueText : '0',
           express:'',
@@ -34,6 +35,9 @@ class Calculator extends Component {
         }
     }
 
+    isLoggedIn() {
+    return this.isAuthenticated() && !!this.props.profile;
+  }
 
     //监听所有按钮的click事件
     handleValueInput(data) {
@@ -49,12 +53,13 @@ class Calculator extends Component {
             case 'equal': //=
                 let val = eval(cur_value)+'';
                 let resultbefore = cur_value + ' = ' +val;
+                let username = this.props.profile.name;
                 console.log(resultbefore,'suanshi');
                 console.log(val,'jieguo');
                 this.setState({express:resultbefore});
                 let myDate = new Date();
                 let time = myDate.toLocaleString();
-                this.state.record.push({time:time,user:"name",value:resultbefore});
+                this.state.record.push({time:time,user:username,value:resultbefore});
                 console.log(this.state.record,'record');
                 //updateCal(resultbefore);
                 return val;
@@ -133,13 +138,16 @@ class Calculator extends Component {
 }
 
     render() {
+      const hello = this.isLoggedIn();
       let buttonlist = [];//按钮列表
       let historyList = [];
-      console.log(buttonlist);
       console.log(this.state.record);
-      console.log(historyList);
       buttonlist = this.initButtonList(buttonlist,BUTTONVALUE);
       historyList = this.initHistoryList(historyList,this.state.record);
+    if(!hello) return (
+      <h>Please Login first to use the Calculator!</h>
+    );
+    else {
         return (
             <div className='div_class_All'>
                 <div className='div_class_calculator'>
@@ -163,7 +171,9 @@ class Calculator extends Component {
             </div>
         );
     }
+  }
 }
+
 
 /*export default wrapWithTryCatch(
     React,

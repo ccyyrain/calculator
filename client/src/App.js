@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
 import 'bulma/css/bulma.css';
-import calculator from './calculator';
-import { Route } from 'react-router-dom'
+import Calculator from './Calculator';
+import { Route } from 'react-router-dom';
+import { withAuth } from './Auth';
+import Account from './Account';
 
 class App extends Component {
+
   render() {
+    console.log(this.props,"props");
     return (
       <div className="App">
 
@@ -16,24 +20,21 @@ class App extends Component {
       <a className="navbar-item title" href="/">A Simple Calculator</a>
       </div>
       <div className="navbar-end">
-      <a className="navbar-item " href="/">
-      <i className="fa fa-home fa-2x"></i>
-      Login
-      </a>
+      <Account {...this.props} />
       </div>
       </div>
       </div>
       </nav>
 
       <h className="App-intro">
-      Please Login to use the calculator.
+      Introduction~
       </h>
         <div className="content">
-          <Route path="/" component={calculator} />
+          <Route path="/" render={props => <Calculator {...props} {...this.props} />} />
         </div>
       </div>
     );
   }
 }
 
-export default App;
+export default withAuth(App);
