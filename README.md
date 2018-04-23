@@ -1,2 +1,2 @@
-# calculator
-A project for Sezzle
+# Calculator
+Only inlcude front end design.
